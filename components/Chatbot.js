@@ -61,7 +61,8 @@ export default function ChatbotWidget() {
     }
   };
 
-  const handleStartChat = async () => {
+  const handleStartChat = async (e) => {
+    e.preventDefault();
     if (!userInfo.name || !userInfo.email || !userInfo.mobile) {
       alert("Please fill in all fields.");
       return;
@@ -103,11 +104,13 @@ export default function ChatbotWidget() {
 
           {!started ? (
             <div style={{ padding: 20 }}>
+              <form onSubmit={handleStartChat}>
               <p className="text-sm mb-4">Hi! Before starting the chat provide us some information about yourself</p>
-              <input placeholder="Name" value={userInfo.name} onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })} className="border border-gray-300 p-2 w-full rounded-sm" />
-              <input placeholder="Email" type="email" value={userInfo.email} onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })} className="border border-gray-300 p-2 mt-3 w-full rounded-sm" />
-              <input placeholder="Mobile" type="tel" value={userInfo.mobile} onChange={(e) => setUserInfo({ ...userInfo, mobile: e.target.value })} className="border border-gray-300 p-2 mt-3 w-full rounded-sm" />
-              <button onClick={handleStartChat} className="border border-red-100 bg-red-50 w-full rounded-sm mt-4 mb-4 text-red-700 hover:bg-red-700 hover:text-white py-1 transition ease-in-out 3s">Start Chat</button>
+              <input placeholder="Name" type="text" value={userInfo.name} onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })} className="border border-gray-300 p-2 w-full rounded-sm"  required/>
+              <input placeholder="Email" type="email" value={userInfo.email} onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })} className="border border-gray-300 p-2 mt-3 w-full rounded-sm"  required/>
+              <input placeholder="Mobile" type="number" value={userInfo.mobile} onChange={(e) => setUserInfo({ ...userInfo, mobile: e.target.value })} className="border border-gray-300 p-2 mt-3 w-full rounded-sm"  required/>
+              <button className="border border-red-100 bg-red-50 w-full rounded-sm mt-4 mb-4 text-red-700 hover:bg-red-700 hover:text-white py-1 transition ease-in-out 3s">Start Chat</button>
+              </form>
             </div>
           ) : (
             <>
