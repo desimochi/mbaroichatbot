@@ -5,9 +5,9 @@
     position: fixed;
     bottom: 60px;
     right: 80px;
-    background: #fef2f2;
+    background: #b91c1c;
     border: 1px solid #b91c1c;
-    color: #b91c1c;
+    color: #fff;
     border-radius: 9999px;
     padding: 14px 20px;
     font-size: 16px;
@@ -34,13 +34,21 @@
   .initial{
      font-size: 14px
   }
+     .chatbot-close-btn {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  font-size: 18px;
+  cursor: pointer;
+}
   .chatbot-header {
-    background: #b91c1c;
-    color: white;
-    padding: 16px;
-    text-align: center;
-    font-size: 18px;
-  }
+  position: relative;
+  background: #b91c1c;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 18px;
+}
 
   .chatbot-body {
     padding: 10px;
@@ -156,7 +164,10 @@
   chatbot.style.display = "none";
 
   chatbot.innerHTML = `
-    <div class="chatbot-header">MBAROI - AI Chatbot</div>
+    <div class="chatbot-header">
+  MBAROI - AI Chatbot
+  <span class="chatbot-close-btn" title="Close Chat">✕</span>
+</div>
     <div class="chatbot-body" id="chatBody">
       <p class="initial">Hi! Before starting the chat provide us some information about yourself</p>
       <div id="chatMessages" style="display: flex; flex-direction: column;"></div>
@@ -223,7 +234,9 @@ mobileInput.addEventListener("input", function () {
   toggleBtn.addEventListener("click", () => {
     chatbot.style.display = chatbot.style.display === "none" ? "flex" : "none";
   });
-
+  chatbot.querySelector(".chatbot-close-btn").addEventListener("click", () => {
+    chatbot.style.display = "none";
+  });
   chatbot.querySelector(".chatbot-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
