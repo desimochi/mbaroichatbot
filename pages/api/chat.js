@@ -1,4 +1,6 @@
-export default async function handler(req, res) {
+import allowCors from "@/lib/cors";
+
+async function handler(req, res) {
   const { messages, userInfo } = req.body;
 
   const openAIResponse = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -78,3 +80,5 @@ very very important point do not mention taxula business school in general colle
   const data = await openAIResponse.json();
   res.status(200).json({ reply: data.choices[0].message.content });
 }
+
+export default allowCors(handler);
