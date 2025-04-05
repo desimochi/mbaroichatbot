@@ -116,35 +116,43 @@
     font-size: 14px;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     .chatbot-box {
       bottom: 140px;
-      right: 20px;
+      right: 60px;
       width: 400px;
       height: 550px;
       border-radius: 12px;
     }
       .chatbot-toggle-btn{
-      right: 20px;
+      right: 60px;
       }
   }
-    @media (max-width: 420px) {
+    @media (min-width: 420px) and (max-width: 767px) {
     .chatbot-box {
       bottom: 140px;
       right: 20px;
-      width: 360px;
+      width: 380px;
       height: 480px;
       border-radius: 12px;
     }
-      @media (max-width: 380px) {
-    .chatbot-box {
-      bottom: 140px;
-      right: 20px;
-      width: 330px;
-      height: 410px;
-      border-radius: 12px;
-    }
+      .chatbot-toggle-btn{
+      right: 10px;
+      }
+    
   }
+       @media (min-width: 360px) and (max-width: 415px) {
+  .chatbot-box {
+    width: 320px;
+    height: 480px;
+    right:0;
+    bottom: 140px;
+    border-radius: 12px;
+  }
+    .chatbot-toggle-btn{
+      right: 0px;
+      }
+    
 `;
 
   document.head.appendChild(style);
