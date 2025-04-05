@@ -15,37 +15,39 @@
     z-index: 9999;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
+
   .chatbot-box {
     position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 90vw;
-    max-width: 400px;
-    height: 75vh;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background: white;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     z-index: 9999;
     font-family: sans-serif;
   }
+
   .chatbot-header {
     background: #b91c1c;
     color: white;
-    padding: 14px;
+    padding: 16px;
     text-align: center;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
   }
+
   .chatbot-body {
     padding: 10px;
     overflow-y: auto;
     flex-grow: 1;
     background: white;
-    max-height: 60vh;
   }
+
   .chatbot-message {
     font-size: 14px;
     margin-bottom: 10px;
@@ -54,19 +56,25 @@
     max-width: 85%;
     word-wrap: break-word;
   }
+
   .chatbot-message.user {
     background: #fef2f2;
     align-self: flex-end;
   }
+
   .chatbot-message.bot {
     background: #f9fafb;
     align-self: flex-start;
   }
+
   .chatbot-footer {
     display: flex;
-    padding: 10px;
+    padding: 12px;
     gap: 8px;
+    background: white;
+    border-top: 1px solid #e5e7eb;
   }
+
   .chatbot-footer input {
     flex: 1;
     padding: 10px;
@@ -74,6 +82,7 @@
     border-radius: 6px;
     border: 1px solid #d1d5db;
   }
+
   .chatbot-footer button {
     background: #fef2f2;
     color: #b91c1c;
@@ -81,14 +90,16 @@
     padding: 6px 10px;
     border-radius: 6px;
   }
+
   .chatbot-form input {
     margin-bottom: 10px;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 14px;
     border: 1px solid #d1d5db;
     border-radius: 6px;
   }
+
   .chatbot-form button {
     width: 100%;
     background: #fef2f2;
@@ -97,15 +108,20 @@
     border: 1px solid #b91c1c;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 14px;
   }
 
   @media (min-width: 768px) {
     .chatbot-box {
-      width: 350px;
-      height: 500px;
+      bottom: 80px;
+      right: 20px;
+      width: 400px;
+      height: 550px;
+      border-radius: 12px;
     }
   }
 `;
+
   document.head.appendChild(style);
 
   const toggleBtn = document.createElement("button");
