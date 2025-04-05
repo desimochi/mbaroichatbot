@@ -165,7 +165,16 @@
       <form class="chatbot-form">
         <input type="text" placeholder="Name" name="name" required />
         <input type="email" placeholder="Email" name="email" required />
-        <input type="tel" placeholder="Mobile" name="mobile" required />
+        <input
+  type="tel"
+  placeholder="Mobile"
+  name="mobile"
+  pattern="\d{10}"
+  maxlength="10"
+  minlength="10"
+  required
+  inputmode="numeric"
+/>
         <button type="submit">Start Chat</button>
       </form>
     </div>
