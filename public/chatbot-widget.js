@@ -116,18 +116,7 @@
     font-size: 14px;
   }
 
-  @media (min-width: 768px) {
-    .chatbot-box {
-      bottom: 140px;
-      right: 60px;
-      width: 400px;
-      height: 550px;
-      border-radius: 12px;
-    }
-      .chatbot-toggle-btn{
-      right: 60px;
-      }
-  }
+
     @media (min-width: 420px) and (max-width: 767px) {
     .chatbot-box {
       bottom: 140px;
@@ -143,14 +132,14 @@
   }
        @media (min-width: 360px) and (max-width: 415px) {
   .chatbot-box {
-    width: 320px;
+    width: 350px;
     height: 480px;
-    right:0;
+    right:20px;
     bottom: 140px;
     border-radius: 12px;
   }
     .chatbot-toggle-btn{
-      right: 0px;
+      right: 20px;
       }
     
 `;
