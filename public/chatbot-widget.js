@@ -111,7 +111,7 @@
     font-size: 14px;
   }
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     .chatbot-box {
       bottom: 80px;
       right: 20px;
