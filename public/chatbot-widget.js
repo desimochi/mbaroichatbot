@@ -169,9 +169,6 @@
   type="tel"
   placeholder="Mobile"
   name="mobile"
-  pattern="\d{10}"
-  maxlength="10"
-  minlength="10"
   required
   inputmode="numeric"
 />
@@ -233,9 +230,9 @@ mobileInput.addEventListener("input", function () {
     const name = form.name.value;
     const email = form.email.value;
     const mobile = form.mobile.value;
-
+    const mobileIsValid = /^[0-9]{10}$/.test(mobile);
     if (!name || !email || !mobile) return alert("Please fill all fields.");
-
+    if (!mobileIsValid) return alert("Please enter a valid mobile number.");
     userInfo = { name, email, mobile };
     await fetch("https://mbaroichatbot.vercel.app/api/saveUser", {
       method: "POST",
