@@ -3,8 +3,8 @@
   style.textContent = `
   .chatbot-toggle-btn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 60px;
+    right: 80px;
     background: #fef2f2;
     border: 1px solid #b91c1c;
     color: #b91c1c;
@@ -18,26 +18,27 @@
 
   .chatbot-box {
     position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
+    bottom: 140px;
+    right: 80px;
+    width: 400px;
+    max-height: 480px;
     display: flex;
     flex-direction: column;
     background: white;
-    border-radius: 0;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     z-index: 9999;
     font-family: sans-serif;
   }
-
+  .initial{
+     font-size: 14px
+  }
   .chatbot-header {
     background: #b91c1c;
     color: white;
     padding: 16px;
     text-align: center;
-    font-weight: bold;
     font-size: 18px;
   }
 
@@ -81,6 +82,7 @@
     font-size: 14px;
     border-radius: 6px;
     border: 1px solid #d1d5db;
+    margin-bottom: 8px;
   }
 
   .chatbot-footer button {
@@ -89,6 +91,7 @@
     border: 1px solid #b91c1c;
     padding: 6px 10px;
     border-radius: 6px;
+    
   }
 
   .chatbot-form input {
@@ -108,15 +111,37 @@
     border: 1px solid #b91c1c;
     border-radius: 6px;
     cursor: pointer;
+    margin-top:20px;
+    margin-bottom:20px;
     font-size: 14px;
   }
 
   @media (max-width: 768px) {
     .chatbot-box {
-      bottom: 80px;
+      bottom: 140px;
       right: 20px;
       width: 400px;
       height: 550px;
+      border-radius: 12px;
+    }
+      .chatbot-toggle-btn{
+      right: 20px;
+      }
+  }
+    @media (max-width: 420px) {
+    .chatbot-box {
+      bottom: 140px;
+      right: 20px;
+      width: 360px;
+      height: 480px;
+      border-radius: 12px;
+    }
+      @media (max-width: 380px) {
+    .chatbot-box {
+      bottom: 140px;
+      right: 20px;
+      width: 330px;
+      height: 410px;
       border-radius: 12px;
     }
   }
@@ -136,6 +161,7 @@
   chatbot.innerHTML = `
     <div class="chatbot-header">MBAROI - AI Chatbot</div>
     <div class="chatbot-body" id="chatBody">
+      <p class="initial">Hi! Before starting the chat provide us some information about yourself</p>
       <div id="chatMessages" style="display: flex; flex-direction: column;"></div>
     </div>
     <div id="chatForm" style="padding: 10px;">

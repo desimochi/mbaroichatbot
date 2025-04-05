@@ -1,17 +1,11 @@
-// pages/embed.js
-import Head from "next/head";
-import ChatbotWidget from "@/components/Chatbot";
+// pages/index.js
+import Script from 'next/script';
 
-export default function EmbedPage() {
+export default function HomePage() {
   return (
     <>
-      <Head>
-        <title>MBAROI Chatbot Widget</title>
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
-      <div style={{ width: "100%", height: "100vh", margin: 0, padding: 0 }}>
-        <ChatbotWidget />
-      </div>
+      <h1>Hello from MBAROI</h1>
+      <Script src="/chatbot-widget.js" strategy="lazyOnload" />
     </>
   );
 }
