@@ -183,6 +183,12 @@
       <button id="chatSendBtn">➤</button>
     </div>
   `;
+  const mobileInput = chatbot.querySelector('input[name="mobile"]');
+
+mobileInput.addEventListener("input", function () {
+  // Remove anything that is not a digit and limit to 10 numbers
+  this.value = this.value.replace(/[^0-9]/g, "").slice(0, 10);
+});
   document.body.appendChild(chatbot);
 
   let userInfo = null;
