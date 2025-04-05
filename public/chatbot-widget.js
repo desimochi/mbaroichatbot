@@ -140,7 +140,7 @@
 
   const handleBotReply = async (input) => {
     messages.push({ role: "user", content: input });
-    const res = await fetch("/api/chat", {
+    const res = await fetch("https://mbaroichatbot.vercel.app/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages }),
@@ -149,7 +149,7 @@
     messages.push({ role: "assistant", content: data.reply });
     addMessage("bot", data.reply);
 
-    fetch("/api/saveMessage", {
+    fetch("https://mbaroichatbot.vercel.app/api/saveMessage", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -173,7 +173,7 @@
     if (!name || !email || !mobile) return alert("Please fill all fields.");
 
     userInfo = { name, email, mobile };
-    await fetch("/api/saveUser", {
+    await fetch("https://mbaroichatbot.vercel.app/api/saveUser", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userInfo),
