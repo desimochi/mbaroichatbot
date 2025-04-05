@@ -1,6 +1,6 @@
 import clientPromise from "@/lib/mongodb";
-
-export default async function handler(req, res) {
+import allowCors from "@/lib/cors";
+ async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
 
   const { email, message } = req.body;
@@ -60,3 +60,4 @@ export default async function handler(req, res) {
     res.status(500).json({ success: false, error: error.message });
   }
 }
+export default allowCors(handler);
