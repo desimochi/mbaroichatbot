@@ -227,23 +227,48 @@ mobileInput.addEventListener("input", function () {
   chatbot.querySelector(".chatbot-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const mobile = form.mobile.value;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const mobile = form.mobile.value.trim();
+    const button = form.querySelector("button");
+  
+    // Validate mobile number: must be exactly 10 digits
     const mobileIsValid = /^[0-9]{10}$/.test(mobile);
-    if (!name || !email || !mobile) return alert("Please fill all fields.");
-    if (!mobileIsValid) return alert("Please enter a valid mobile number.");
-    userInfo = { name, email, mobile };
-    await fetch("https://mbaroichatbot.vercel.app/api/saveUser", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userInfo),
-    });
-
-    document.getElementById("chatForm").style.display = "none";
-    chatbot.querySelector(".chatbot-footer").style.display = "flex";
-    addMessage("bot", `Hi ${name}! Ask me anything about MBA or PGDM.`);
+  
+    if (!name || !email || !mobile) {
+      alert("Please enter valid name, email, and a 10-digit mobile number.");
+      return;
+    }
+  if (!mobileIsValid) {
+    alert("Please enter a valid 10-digit mobile number.");
+    return
+  }
+    // Show loading state
+    button.disabled = true;
+    button.textContent = "Submitting...";
+  
+    try {
+      userInfo = { name, email, mobile };
+  
+      await fetch("https://mbaroichatbot.vercel.app/api/saveUser", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userInfo),
+      });
+  
+      // On success
+      document.getElementById("chatForm").style.display = "none";
+      chatbot.querySelector(".chatbot-footer").style.display = "flex";
+      addMessage("bot", `Hi ${name}! Ask me anything about MBA or PGDM.`);
+    } catch (err) {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      // Reset loading state
+      button.disabled = false;
+      button.textContent = "Start Chat";
+    }
   });
+  
 
   document.getElementById("chatSendBtn").addEventListener("click", () => {
     const inputEl = document.getElementById("chatInput");
