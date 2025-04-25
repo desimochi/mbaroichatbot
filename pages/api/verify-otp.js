@@ -1,5 +1,5 @@
 // pages/api/verify-otp.js
-import { withSession } from "@/lib/withSession";
+import { withSession } from "../../lib/withSession";
 import allowCors from "@/lib/cors"; // CORS handler
 
 async function handler(req, res) {
@@ -14,7 +14,7 @@ async function handler(req, res) {
     }
 
     const sessionOtp = await req.session.get("otp");
-    if (!sessionOtp || sessionOtp.mobile !== mobile) {
+    if (!sessionOtp.otp || sessionOtp.mobile !== mobile) {
       return res.status(400).json({
         success: false,
         message: "OTP not found or expired.",
