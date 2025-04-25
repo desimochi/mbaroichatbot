@@ -2,13 +2,7 @@
 import { withSession } from "../../lib/withSession";
 import allowCors from "@/lib/cors";
 async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({
-      success: false,
-      message: "Method not allowed. Only POST requests are accepted.",
-    });
-  }
-
+  if (req.method === "POST") {
   const { mobile, otp } = req.body;
 
   if (!mobile || !otp) {
@@ -45,6 +39,12 @@ async function handler(req, res) {
     return res.status(400).json({
       success: false,
       message: "Invalid OTP.",
+    });
+  }
+} else {
+    return res.status(405).json({
+      success: false,
+      message: "Method not allowed. Only POST requests are accepted.",
     });
   }
 }
